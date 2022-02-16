@@ -38,25 +38,25 @@ let surligner = (stats) => {
         
         if (nbInterventions == stats.min) {
             tr_class = "bg-success text-light font-weight-bold"
-            let badge = document.createElement("div")
+            let badge = document.createElement("span")
             badge.setAttribute("class", "badge badge-light text-wrap")
             badge.textContent = "région la moins touchée"
             td_emplacement.appendChild(badge)
           } else if (nbInterventions == stats.max) {
             tr_class = "bg-danger text-light font-weight-bold" 
-            let badge = document.createElement("div")
+            let badge = document.createElement("span")
             badge.setAttribute("class", "badge badge-light text-wrap")
             badge.textContent = "région la plus touchée"
             td_emplacement.appendChild(badge)
           } else if (stats.medianes.includes(parseInt(nbInterventions))) {
             tr_class = "bg-warning font-weight-bold"
-            let badge = document.createElement("div")
+            let badge = document.createElement("span")
             badge.setAttribute("class", "badge badge-light text-wrap")
             badge.textContent = "région moyennement touchée"
             td_emplacement.appendChild(badge)
           } 
 
-        tr_row.setAttribute("class", tr_class)
+        tr_row.className = tr_class
     } 
 
 }
