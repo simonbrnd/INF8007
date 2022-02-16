@@ -28,6 +28,7 @@ let surligner = (stats) => {
     let tr_rows = document.getElementsByName("dataframe-row")
     let td_nb_inters = document.getElementsByName("nb-interventions")
     let td_emplacements = document.getElementsByName("emplacement")
+
     for(i in td_nb_inters){
         let tr_row = tr_rows[i]
         let td_nb_inter = td_nb_inters[i]
@@ -64,9 +65,8 @@ let surligner = (stats) => {
 let remplirTableau = () => {
     let tbody = document.getElementById("interventions-par-poste")
     let total_cases = 0
-
-    let statistiques = calculerStatistiques()
     
+    // Remplissage dynamique de l'ensemble des colonnes du tableau
     for(element of data.nbInterventionsParPDQ){
         let tr = document.createElement("tr")
         tr.setAttribute("name", "dataframe-row")
@@ -90,6 +90,7 @@ let remplirTableau = () => {
         tr.appendChild(td_nbInterventions)
     }
 
+    // Ajout de la dernière colonne "Total"
     let tr = document.createElement("tr")
     tr.className = "bg-dark text-light"
 
@@ -100,7 +101,6 @@ let remplirTableau = () => {
     tr.appendChild(th_PDQ)
 
     let th_Emplacement = document.createElement("th")
-    th_Emplacement.textContent = ""
     tr.appendChild(th_Emplacement)
 
     let th_nbInterventions = document.createElement("th")
@@ -108,7 +108,17 @@ let remplirTableau = () => {
     th_nbInterventions.className = "text-right"
     tr.appendChild(th_nbInterventions)
 
-    setTimeout(surligner(statistiques),1000)
+    // Ajout du texte au niveau du footer
+    let h6_footer = document.getElementById("derniere-mise-a-jour")
+    let dateDebut = data.dateDebut
+    let dateMAJ = data.dateMAJ
+    let footer_text_content = "* " + dateDebut + " à aujourd'hui, dernière mise à jour des données : " + dateMAJ 
+    h6_footer.textContent = footer_text_content
+    h6_footer.setAttribute("class", "font-weight-bold")
+
+    // Calcul des statistiques des données et surlignage des colonnes particulières
+    let statistiques = calculerStatistiques()
+    window.setTimeout(() =>  {surligner(statistiques)}, 1000)
 
 }
 remplirTableau()
