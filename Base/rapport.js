@@ -108,6 +108,10 @@ let remplirTableau = () => {
     th_nbInterventions.className = "text-right"
     tr.appendChild(th_nbInterventions)
 
+    // Calcul des statistiques des données et surlignage des colonnes particulières
+    let statistiques = calculerStatistiques()
+    window.setTimeout(() =>  {surligner(statistiques)}, 1000)
+
     // Ajout du texte au niveau du footer
     let h6_footer = document.getElementById("derniere-mise-a-jour")
     let dateDebut = data.dateDebut
@@ -115,10 +119,5 @@ let remplirTableau = () => {
     let footer_text_content = "* " + dateDebut + " à aujourd'hui, dernière mise à jour des données : " + dateMAJ 
     h6_footer.textContent = footer_text_content
     h6_footer.setAttribute("class", "font-weight-bold")
-
-    // Calcul des statistiques des données et surlignage des colonnes particulières
-    let statistiques = calculerStatistiques()
-    window.setTimeout(() =>  {surligner(statistiques)}, 1000)
-
 }
 remplirTableau()
