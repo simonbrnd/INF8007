@@ -1,12 +1,3 @@
-const adaptCursor = (btnDiv) => {
-    if(btnDiv.disabled){
-        btnDiv.style.cursor = "default"
-    }
-    else{
-        btnDiv.style.cursor = "pointer"
-    }
-}
-
 const areFormInputsFilled = () => {
     let allOk = true;
     for(input of document.getElementsByClassName("input")) {
@@ -17,10 +8,13 @@ const areFormInputsFilled = () => {
     }
     return allOk; 
 }
+
+// Rapport de déclaration d'une intervention
+
 const toggleSubmit = () => {
-    const submitBtn = document.getElementById("add-submit");
+    const submitBtn = document.getElementById("add-submit"); // Boutton Soumettre le rapport
     submitBtn.disabled = !areFormInputsFilled();
-    submitBtn.addEventListener("mouseover", () => {adaptCursor(submitBtn)})
+    submitBtn.style.cursor = submitBtn.disabled ? submitBtn.style.cursor = "default" : submitBtn.style.cursor = "pointer";
 }
 
 toggleSubmit()
@@ -28,6 +22,8 @@ toggleSubmit()
 for(input of document.getElementsByClassName("input")) {
     input.addEventListener("change", toggleSubmit);
 }
+
+// Mise-à-jour d'un rapport d'intervention
 
 const isFormTextInputFilled = (element_id) => {
     let Ok = true;
@@ -47,20 +43,27 @@ const formRemove = document.getElementById("form-remove")
 const toggleMajSearch = () => {
     const searchBtn = document.getElementById("modify-search-submit");
     searchBtn.disabled = !isFormTextInputFilled("modify_no_intervention");
+    searchBtn.style.cursor = searchBtn.disabled ? searchBtn.style.cursor = "default" : searchBtn.style.cursor = "pointer";
     if(!isFormTextInputFilled("modify_no_intervention") && document.getElementById("form-modify-alter") != null){
         divModify.removeChild(formModify)
     }
 }
 
+toggleMajSearch()
+
+
+// Retrait d'un rapport d'intervention
+
 const toggleRemoveSearch = () => {
     const searchBtn = document.getElementById("remove-search-submit");
     searchBtn.disabled = !isFormTextInputFilled("remove_no_intervention");
+    searchBtn.style.cursor = searchBtn.disabled ? searchBtn.style.cursor = "default" : searchBtn.style.cursor = "pointer";
     if(!isFormTextInputFilled("remove_no_intervention") && document.getElementById("form-remove") != null){
         divRemove.removeChild(formRemove)
     }
 }
 
-toggleMajSearch()
+
 toggleRemoveSearch()
 
 const TextInput = document.getElementById("modify_no_intervention");
@@ -89,7 +92,6 @@ const hideMajForm = (evt) => {
 
         const removeFormAfterClick = (e) => {
             if(isFormDateInputFilled){
-                //e.preventDefault()
                 divModify.removeChild(formModify)
                 TextInput.value = null
                 DateInput.value = null
@@ -99,6 +101,8 @@ const hideMajForm = (evt) => {
         const toggleDate = () => {
             const majBtn = document.getElementById("modify-alter-submit");
             majBtn.disabled = !isFormDateInputFilled();
+            
+            majBtn.style.cursor = majBtn.disabled ? majBtn.style.cursor = "default" : majBtn.style.cursor = "pointer";
             majBtn.addEventListener("click", removeFormAfterClick)
             majBtn.addEventListener("mouseover", () => {adaptCursor(majBtn)})
         }
@@ -110,14 +114,12 @@ const hideMajForm = (evt) => {
     }
 }
 
-
 const hideRemoveForm = (evt) => {
     evt.preventDefault()
     if(!RemoveDateBtn.disabled || document.getElementById("form-remove") === null){
         divRemove.appendChild(formRemove)
 
         const removeFormAfterClick = (e) => {
-            //e.preventDefault()
             divRemove.removeChild(formRemove)
             removeTextInput.value = null
         }

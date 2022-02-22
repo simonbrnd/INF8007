@@ -1,3 +1,10 @@
+<!--
+Étudiant 1 : Serruau, Clara (2164678)
+Étudiant 2 : Bernard, Simon (2163745)
+INF8007 – Langages de script
+-->
+
+
 <!doctype html>
 <html lang="fr">
   <head>
@@ -28,7 +35,7 @@
 				<a class="nav-link active" id="nav-report-tab" data-toggle="tab" href="#nav-report" role="tab" aria-controls="nav-report" aria-selected="true"><i class="bi bi-card-text"></i> Rapport</a>
 			</li>
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-collection"></i> Intervention</a>
+				<a class="nav-link dropdown-toggle" id="nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-collection"></i> Intervention</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" id="nav-add-tab" data-toggle="tab" href="#nav-add" role="tab" aria-controls="nav-add" aria-selected="true"><i class="bi bi-plus-square"></i> Déclaration</a>
 					<a class="dropdown-item" id="nav-modify-tab" data-toggle="tab" href="#nav-modify" role="tab" aria-controls="nav-modify" aria-selected="true"><i class="bi bi-toggle-off"></i> Mise-à-jour</a>
@@ -243,7 +250,8 @@
 				</div>
 				<div class="form-row">
 					<div class="form-group col-12">
-						<button type="submit" id="modify-alter-submit" class="btn btn-warning col-lg-4 col-md-5 offset-lg-8 offset-md-7"><i class="bi bi-toggle-off"></i> Mise-à-jour du rapport</button>
+						<!-- type reset pour réinitialiser les valeurs du form au clic -->
+						<button type="submit reset" id="modify-alter-submit" class="btn btn-warning col-lg-4 col-md-5 offset-lg-8 offset-md-7"><i class="bi bi-toggle-off"></i> Mise-à-jour du rapport</button>
 					</div>
 				</div>
 			</form>
@@ -290,7 +298,7 @@
 				</div>
 				<div class="form-row">
 					<div class="form-group col-12">
-						<button type="submit" id="remove-submit" class="btn btn-warning col-lg-4 col-md-5 offset-lg-8 offset-md-7"><i class="bi bi-dash-square"></i> Retrait du rapport</button>
+						<button type="reset submit" id="remove-submit" class="btn btn-warning col-lg-4 col-md-5 offset-lg-8 offset-md-7"><i class="bi bi-dash-square"></i> Retrait du rapport</button>
 					</div>
 				</div>
 			</form>

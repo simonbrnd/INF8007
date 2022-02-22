@@ -107,17 +107,23 @@ let remplirTableau = () => {
     th_nbInterventions.textContent = total_cases
     th_nbInterventions.className = "text-right"
     tr.appendChild(th_nbInterventions)
-
-    // Calcul des statistiques des données et surlignage des colonnes particulières
-    let statistiques = calculerStatistiques()
-    window.setTimeout(() =>  {surligner(statistiques)}, 1000)
-
-    // Ajout du texte au niveau du footer
-    let h6_footer = document.getElementById("derniere-mise-a-jour")
-    let dateDebut = data.dateDebut
-    let dateMAJ = data.dateMAJ
-    let footer_text_content = "* " + dateDebut + " à aujourd'hui, dernière mise à jour des données : " + dateMAJ 
-    h6_footer.textContent = footer_text_content
-    h6_footer.setAttribute("class", "font-weight-bold")
 }
-remplirTableau()
+// Calcul des statistiques des données et surlignage des colonnes particulières
+let statistiques = calculerStatistiques()
+
+// Construction du tableau, puis attente de 1 seconde
+let construction = () => {
+    remplirTableau()
+    window.setTimeout(() =>  {surligner(statistiques)}, 1000)
+}
+
+// Appel à la fin du chargement de la page HTML
+window.addEventListener("load",construction)
+
+// Ajout du texte au niveau du footer
+let h6_footer = document.getElementById("derniere-mise-a-jour")
+let dateDebut = data.dateDebut
+let dateMAJ = data.dateMAJ
+let footer_text_content = "* " + dateDebut + " à aujourd'hui, dernière mise à jour des données : " + dateMAJ 
+h6_footer.textContent = footer_text_content
+h6_footer.setAttribute("class", "font-weight-bold")
