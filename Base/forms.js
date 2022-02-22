@@ -104,7 +104,6 @@ const hideMajForm = (evt) => {
             
             majBtn.style.cursor = majBtn.disabled ? majBtn.style.cursor = "default" : majBtn.style.cursor = "pointer";
             majBtn.addEventListener("click", removeFormAfterClick)
-            majBtn.addEventListener("mouseover", () => {adaptCursor(majBtn)})
         }
         
         toggleDate()
@@ -135,9 +134,7 @@ const hideRemoveForm = (evt) => {
 }
 
 const DateBtn = document.getElementById("modify-search-submit");
-DateBtn.addEventListener("mouseover", () => {adaptCursor(DateBtn)})
 DateBtn.addEventListener("click", hideMajForm)
 
 const RemoveDateBtn = document.getElementById("remove-search-submit");
-RemoveDateBtn.addEventListener("mouseover", () => {adaptCursor(RemoveDateBtn)})
 RemoveDateBtn.addEventListener("click", hideRemoveForm)
